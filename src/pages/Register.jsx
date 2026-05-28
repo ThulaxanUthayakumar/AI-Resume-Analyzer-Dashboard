@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Login() {
+function Register() {
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  const handleRegister = () => {
 
-  const handleLogin = () => {
-
-    if (!email || !password) {
+    if (!name || !email || !password) {
       alert("All fields are required");
       return;
     }
 
-    navigate("/dashboard");
+    alert("Registration Success");
   };
 
   return (
@@ -24,8 +23,16 @@ function Login() {
       <div className="w-96 bg-white p-6 rounded-lg shadow-lg">
 
         <h1 className="text-3xl font-bold mb-5 text-center">
-          Login
+          Register
         </h1>
+
+        <input
+          type="text"
+          placeholder="Enter Name"
+          className="w-full border p-3 mb-3 rounded"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
 
         <input
           type="email"
@@ -44,21 +51,21 @@ function Login() {
         />
 
         <button
-          onClick={handleLogin}
+          onClick={handleRegister}
           className="w-full bg-black text-white p-3 rounded"
         >
-          Login
+          Register
         </button>
 
         <p className="mt-4 text-center">
 
-          Don't have an account?
+          Already have an account?
 
           <Link
-            to="/register"
+            to="/login"
             className="text-blue-500 ml-2"
           >
-            Register
+            Login
           </Link>
 
         </p>
@@ -69,4 +76,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

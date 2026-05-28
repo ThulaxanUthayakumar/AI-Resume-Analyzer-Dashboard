@@ -1,19 +1,26 @@
-import Sidebar from "../components/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/login");
+  };
+
   return (
-    <div className="flex">
+    <div className="p-10">
 
-      <Sidebar />
+      <h1 className="text-4xl font-bold mb-5">
+        Dashboard
+      </h1>
 
-      <div className="p-5">
-
-        <h1 className="text-3xl font-bold">
-          Dashboard
-        </h1>
-
-      </div>
+      <button
+        onClick={handleLogout}
+        className="bg-red-500 text-white px-5 py-2 rounded"
+      >
+        Logout
+      </button>
 
     </div>
   );
